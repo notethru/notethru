@@ -30,6 +30,8 @@ const dto_1 = require("./dto");
 const user_service_1 = require("../user/user.service");
 const bcrypt = require("bcrypt");
 const local_auth_gaurd_1 = require("./gaurds/local-auth.gaurd");
+const helpers_non_module_1 = require("../helpers-non-module");
+const helpersInstance = new helpers_non_module_1.Helpers();
 let AuthController = class AuthController {
     constructor(authService, userService) {
         this.authService = authService;
@@ -52,14 +54,16 @@ let AuthController = class AuthController {
 };
 __decorate([
     (0, common_1.Post)("signup"),
+    helpersInstance.Public(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.AuthDTO]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.UseGuards)(local_auth_gaurd_1.LocalAuthGuard),
     (0, common_1.Post)("signin"),
+    (0, common_1.UseGuards)(local_auth_gaurd_1.LocalAuthGuard),
+    helpersInstance.Public(),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

@@ -21,4 +21,4 @@ model User {
 
 model Post {
   id    String  @id @default(auto()) @map("_id") @db.ObjectId
-}
+} 

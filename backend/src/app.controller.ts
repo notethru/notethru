@@ -1,13 +1,15 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { JwtAuthGaurd } from 'src/auth/gaurds/jwt-auth.gaurd';
+import { Helpers } from './helpers-non-module';
+
+const helpersInstance = new Helpers()
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @UseGuards(JwtAuthGaurd)
   @Get()
+  @helpersInstance.Public()
   getHello(): string {
     return this.appService.getHello();
   }

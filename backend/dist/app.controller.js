@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-const jwt_auth_gaurd_1 = require("./auth/gaurds/jwt-auth.gaurd");
+const helpers_non_module_1 = require("./helpers-non-module");
+const helpersInstance = new helpers_non_module_1.Helpers();
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
@@ -22,8 +23,8 @@ let AppController = class AppController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)(jwt_auth_gaurd_1.JwtAuthGaurd),
     (0, common_1.Get)(),
+    helpersInstance.Public(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
