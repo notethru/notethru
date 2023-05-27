@@ -18,12 +18,15 @@ let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [passport_1.PassportModule, jwt_1.JwtModule.register({
+        imports: [
+            passport_1.PassportModule,
+            jwt_1.JwtModule.register({
                 secret: process.env.JWT_SECRET,
                 signOptions: {
-                    expiresIn: "7d"
-                }
-            })],
+                    expiresIn: '7d',
+                },
+            }),
+        ],
         providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy],
         controllers: [auth_controller_1.AuthController],
     })

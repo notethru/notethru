@@ -15,7 +15,7 @@ UserModule = __decorate([
     (0, common_1.Global)(),
     (0, common_1.Module)({
         providers: [user_service_1.UserService],
-        exports: [user_service_1.UserService]
+        exports: [user_service_1.UserService],
     })
 ], UserModule);
 exports.UserModule = UserModule;

@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Helpers } from './helpers-non-module';
 
-const helpersInstance = new Helpers()
+const helpersInstance = new Helpers();
 
 @Controller()
 export class AppController {

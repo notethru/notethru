@@ -1,0 +1,23 @@
+{
+  "name": "notethru",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "notethru": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.2.4",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "commander": "^10.0.1"
+  }
+}

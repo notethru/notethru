@@ -11,11 +11,10 @@ const common_1 = require("@nestjs/common");
 const client_1 = require("@prisma/client");
 let PrismaService = class PrismaService extends client_1.PrismaClient {
     onModuleInit() {
-        this.$connect()
-            .then(() => console.log("dbconnected"));
+        this.$connect().then(() => console.log('dbconnected'));
     }
     async enableShutdownHooks(app) {
-        this.$on("beforeExit", async () => {
+        this.$on('beforeExit', async () => {
             await app.close();
         });
     }

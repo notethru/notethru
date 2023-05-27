@@ -27,7 +27,9 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.Matches)(/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/, { message: "Username must only contain alphanumeric characters, underscore and dot" }),
+    (0, class_validator_1.Matches)(/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/, {
+        message: 'Username must only contain alphanumeric characters, underscore and dot',
+    }),
     __metadata("design:type", String)
 ], AuthDTO.prototype, "username", void 0);
 __decorate([

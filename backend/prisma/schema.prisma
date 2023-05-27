@@ -11,14 +11,38 @@ datasource db {
 }
 
 model User {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  email String  @unique
-  name  String
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  name     String
   username String @unique
   password String
-  isCreator Boolean
+  role     Role   @default(USER)
+  blogs    Blog[]
 }
 
-model Post {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-} 
+model Blog {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  author    User        @relation(fields: [authorId], references: [id])
+  fileName  String      
+  authorId  String      @db.ObjectId
+  createdAt DateTime    @default(now())
+  topics Topic[]
+}
+
+model Topic {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+  blog   Blog   @relation(fields: [blogId], references: [id])
+  blogId String @db.ObjectId
+}
+
+model CustomComponent {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  componentId String @unique
+  filePath String
+}
+
+enum Role {
+  USER
+  CREATOR
+}

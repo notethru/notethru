@@ -21,8 +21,8 @@ let UserService = class UserService {
         try {
             user = await this.prismaService.user.findUnique({
                 where: {
-                    username: username
-                }
+                    username: username,
+                },
             });
             return user;
         }
@@ -35,8 +35,8 @@ let UserService = class UserService {
         try {
             user = await this.prismaService.user.findUnique({
                 where: {
-                    id
-                }
+                    id,
+                },
             });
             return user;
         }

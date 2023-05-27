@@ -1,5 +1,5 @@
-import { Strategy } from "passport-jwt";
-import { UserService } from "src/user/user.service";
+import { Strategy } from 'passport-jwt';
+import { UserService } from 'src/user/user.service';
 interface payloadType {
     username: string;
     id: string;

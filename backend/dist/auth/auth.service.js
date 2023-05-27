@@ -20,22 +20,21 @@ let AuthService = class AuthService {
     }
     async create(inputUser) {
         const userFromDatabase = await this.prisma.user.create({
-            data: Object.assign({ isCreator: false }, inputUser)
+            data: Object.assign({}, inputUser),
         });
         return userFromDatabase;
     }
     async signin(inputUser) {
         const payload = {
             username: inputUser.username,
-            id: inputUser.id
+            id: inputUser.id,
         };
         return { access_token: this.jwtService.sign(payload) };
     }
 };
 AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService,
-        jwt_1.JwtService])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService, jwt_1.JwtService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

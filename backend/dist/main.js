@@ -10,10 +10,10 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,
-        stopAtFirstError: true
+        stopAtFirstError: true,
     }));
     app.useGlobalGuards(new jwt_auth_gaurd_1.JwtAuthGaurd(new core_1.Reflector()));
-    await app.listen(3000);
+    await app.listen(5000);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
