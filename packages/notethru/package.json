@@ -8,14 +8,16 @@
     "notethru": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build:publish": "tsc && npm i -g ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.2.4",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "webpack": "^5.84.1"
   },
   "dependencies": {
     "commander": "^10.0.1"
