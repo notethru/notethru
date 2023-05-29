@@ -1,16 +1,27 @@
 import webpack from "webpack"
 import config from "../webpack-config.js"
 
-const compiler = webpack(config)
+const compiler = webpack({ mode: "development", ...config })
 
-export const start_dev_server = async (str, options) => {
-  
-    await new Promise((resolve, reject) => {
-        compiler.run((err, res) => {
-          if (err) {
-            return reject(err);
-          }
-          resolve(res);
-        });
-      });
+const watchSettings = {
+  aggregateTimeout: 300,
+  poll: undefined,
 }
+let watching: object
+
+const start_dev_server = async (str, options) => {
+  
+  watching =  compiler.watch(watchSettings, (err, res) => {
+    if (err) {
+      console.log(err.message)
+    }
+    
+    if (res.compilation.warnings) {
+      res.compilation.warnings.forEach(warning => console.log(warning))
+    }
+  });
+ 
+}
+
+
+export { start_dev_server, watching }
