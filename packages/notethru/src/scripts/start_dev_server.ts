@@ -14,6 +14,7 @@ const start_dev_server = async (str, options) => {
   watching =  compiler.watch(watchSettings, (err, res) => {
     if (err) {
       console.log(err.message)
+      console.log("There is an error!")
     }
     
     if (res.compilation.warnings) {
