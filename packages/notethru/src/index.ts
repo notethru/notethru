@@ -5,6 +5,10 @@ import { start_dev_server } from "./scripts/start_dev_server.js"
 
 const program = new Command("notethru")
 
+process.on('unhandledRejection', err => {
+    throw err;
+});
+
 program
     .name("notethru")
     .description("Notethru's official library for creating and publishing Notethru components.")

@@ -1,12 +1,18 @@
 import path from "path";
+import fs from "fs"
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath);
+
+const node_modules_path = resolveApp('node_modules')
 
 export default {
   // mode: "development",
-//   devtool: false,
+  // devtool: false,
 //   devServer: {
 
 //   },
-  entry: "./src/index.jsx",
+  entry: path.resolve(process.cwd(), "src/index.jsx"),
   output: {
     path: path.resolve(process.cwd(), "dist"),
     filename: "bundle.js",
@@ -32,6 +38,11 @@ export default {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
+  resolveLoader: {
+    modules: ["./node_modules"],
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main'],
   },
 };
