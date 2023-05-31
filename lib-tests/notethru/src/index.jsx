@@ -1,3 +1,9 @@
 import React from "react"
+import { createRoot } from "react-dom/client"
 
-console.log("Hello World")
+const Hello = () => {
+    return <><h1>Hello World!</h1></>
+}
+
+const root = createRoot(document.getElementById("root"))
+root.render(<Hello />)
