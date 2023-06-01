@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "create-notethru-component": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc"
   },

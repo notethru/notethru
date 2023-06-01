@@ -6,7 +6,8 @@
         "sourceMap": true,
         "outDir": "dist",
         "resolveJsonModule": false,
-        "traceResolution": true
+        "traceResolution": true,
+        "esModuleInterop": true
     },
     "include": ["src/**/*", "../../lib-tests/notethru/babel.config.js", "src/babel.config.js"]
 }
