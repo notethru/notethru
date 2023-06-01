@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "chalk": "^5.2.0",
-    "commander": "^10.0.1"
+    "commander": "^10.0.1",
+    "fs-extra": "^11.1.1",
+    "validate-npm-package-name": "^5.0.0"
   }
 }
