@@ -10,6 +10,7 @@ const resolveApp = (relativePath: string) => path.resolve(appDirectory, relative
 
 const node_modules_path = resolveApp('node_modules')
 
+
 const compiler = webpack({ mode: "development", ...config })
 
 const watchSettings = {
@@ -21,7 +22,6 @@ let watching: object
 const start_dev_server = async (str, options) => {
   
   const server = new WebpackDevServer({
-    static: "./dist",
     
   }, compiler);
 
