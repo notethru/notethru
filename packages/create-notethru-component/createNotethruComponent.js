@@ -160,8 +160,8 @@ function init() {
             'Firefox',
             'Safari',
           ],
-          npmPackages: ['react', 'react-dom', 'react-scripts'],
-          npmGlobalPackages: ['create-react-app'],
+          npmPackages: ['react', 'react-dom', 'notethru'],
+          npmGlobalPackages: ['create-notethru-component'],
         },
         {
           duplicates: true,
