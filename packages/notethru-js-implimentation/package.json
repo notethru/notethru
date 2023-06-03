@@ -1,17 +1,17 @@
 {
   "name": "notethru",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Notethru's lib",
   "repository": {
     "type": "git",
     "url": "https://github.com/notethru/notethru.git",
-    "directory": "packages/notethru"
+    "directory": "packages/notethru-js-implimentation"
   },
 
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "notethru": "./dist/index.js"
+    "notethru": "./index.js"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -19,10 +19,11 @@
   "bugs": {
     "url": "https://github.com/notethru/notethru/issues"
   },
-  "files": ["lib/**/*"],
+  "files": [
+    "index.js"
+  ],
   "scripts": {
-    "build": "tsc",
-    "build:publish": "tsc && npm i -g ."
+    
   },
   "keywords": [],
   "author": "",
