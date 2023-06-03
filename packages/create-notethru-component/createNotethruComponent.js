@@ -251,7 +251,7 @@ function createApp(name, verbose, version, template, useYarn, usePnp) {
       )
     );
     // Fall back to latest supported react-scripts on Node 4
-    version = 'react-scripts@0.9.x';
+    // version = 'react-scripts@0.9.x';
   }
 
   const root = path.resolve(name);
@@ -456,9 +456,7 @@ function run(
         console.log(
           `Installing ${chalk.cyan('react')}, ${chalk.cyan(
             'react-dom'
-          )}, and ${chalk.cyan(packageInfo.name)}${
-            supportsTemplates ? ` with ${chalk.cyan(templateInfo.name)}` : ''
-          }...`
+          )}, and ${chalk.cyan(packageInfo.name)}...`
         );
         console.log();
 
@@ -498,7 +496,7 @@ function run(
       //   );
 
       //Work Require Here
-      await cpTemplate(appName, root, useTypescript)
+      await cpTemplate(appName, root, useTypescript, useYarn)
 
         if (version === 'react-scripts@0.9.x') {
           console.log(
