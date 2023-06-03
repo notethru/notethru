@@ -41,12 +41,14 @@ const url = require('url');
 const validateProjectName = require('validate-npm-package-name');
 
 const packageJson = require('./package.json');
+const { cpTemplate } = require('./utils/copyTemplate');
 
 function isUsingYarn() {
   return (process.env.npm_config_user_agent || '').indexOf('yarn') === 0;
 }
 
 let projectName;
+let useTypescript = false;
 
 function init() {
   const program = new commander.Command(packageJson.name)
@@ -65,6 +67,10 @@ function init() {
     .option(
       '--template <path-to-template>',
       'specify a template for the created project'
+    )
+    .option(
+      '--typescript',
+      'use typescript in project'
     )
     .option('--use-pnp')
     .allowUnknownOption()
@@ -163,6 +169,10 @@ function init() {
         }
       )
       .then(console.log);
+  }
+
+  if(program.typescript) {
+    useTypescript = true
   }
 
   if (typeof projectName === 'undefined') {
@@ -488,6 +498,7 @@ function run(
       //   );
 
       //Work Require Here
+      await cpTemplate(appName, root, useTypescript)
 
         if (version === 'react-scripts@0.9.x') {
           console.log(
