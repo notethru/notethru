@@ -14,7 +14,6 @@ const envinfo = require('envinfo');
 const execSync = require('child_process').execSync;
 const fs = require('fs-extra');
 const hyperquest = require('hyperquest');
-const prompts = require('prompts');
 const os = require('os');
 const path = require('path');
 const semver = require('semver');
