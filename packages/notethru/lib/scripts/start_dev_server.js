@@ -1,11 +1,6 @@
 import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
 import config from "../webpack-config.js";
-import path from "path";
-import fs from "fs";
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
-const node_modules_path = resolveApp('node_modules');
 const compiler = webpack({ mode: "development", ...config });
 const watchSettings = {
     aggregateTimeout: 300,

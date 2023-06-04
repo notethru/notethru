@@ -1,7 +1,7 @@
 {
-  "name": "notethru",
+  "name": "notethru-test",
   "version": "1.0.3",
-  "description": "Notethru's lib",
+  "description": "Notethru's official library for creating and publishing Notethru components.",
   "repository": {
     "type": "git",
     "url": "https://github.com/notethru/notethru.git",
@@ -9,9 +9,9 @@
   },
 
   "type": "module",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "bin": {
-    "notethru": "./dist/index.js"
+    "notethru-test": "./lib/index.js"
   },
   "engines": {
     "node": ">=16.0.0"
