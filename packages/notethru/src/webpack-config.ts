@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs"
+import babelConfig from "./babel.config.js"
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath);
@@ -29,6 +30,7 @@ export default {
             cacheCompression: false,
             envName: "development",
           },
+          
         },
       },
       {

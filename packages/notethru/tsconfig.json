@@ -4,9 +4,9 @@
         "moduleResolution": "nodenext",
         "target": "ES2020",
         "sourceMap": true,
-        "outDir": "dist",
+        "outDir": "lib",
         "resolveJsonModule": false,
         "traceResolution": true
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*", "../../lib-tests/notethru/babel.config.js", "src/babel.config.js"]
 }

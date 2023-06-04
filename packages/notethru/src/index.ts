@@ -2,6 +2,9 @@
 
 import { Command } from "commander"
 import { start_dev_server } from "./scripts/start_dev_server.js"
+import { createRequire } from "node:module"
+
+const packageJson = createRequire(import.meta.url)("../package.json")
 
 const program = new Command("notethru")
 
