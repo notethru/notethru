@@ -1,5 +1,8 @@
 {
 	"devDependencies": {
 		"@types/node": "^20.2.5"
+	},
+	"dependencies": {
+		"create-notethru-component": "^5.0.9"
 	}
 }

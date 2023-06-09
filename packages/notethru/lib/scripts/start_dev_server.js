@@ -1,21 +1,24 @@
 import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
 import config from "../webpack-config.js";
+import path from "path";
 const compiler = webpack({ mode: "development", ...config });
-const watchSettings = {
-    aggregateTimeout: 300,
-    poll: undefined,
-};
+const importUrl = `${process.cwd()}/src/Component.js`;
+const MainComponent = await import(importUrl);
 let watching;
 const start_dev_server = async (str, options) => {
-    const server = new WebpackDevServer({}, compiler);
+    const server = new WebpackDevServer({
+        static: {
+            directory: path.resolve(path.dirname(new URL(import.meta.url).pathname), "../../render/public"),
+        },
+    }, compiler);
     const runServer = async () => {
         console.log('Starting server...');
         await server.start();
     };
     runServer();
 };
-export { start_dev_server, watching };
+export { start_dev_server, watching, MainComponent };
 // watching =  compiler.watch(watchSettings, (err, res) => {
 //   if (err) {
 //     console.log(err.message)

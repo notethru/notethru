@@ -1,6 +1,6 @@
 {
   "name": "create-notethru-component",
-  "version": "1.0.1",
+  "version": "5.0.10",
   "keywords": [
     "react"
   ],
@@ -20,7 +20,8 @@
   "files": [
     "index.js",
     "createNotethruComponent.js",
-    "utils/**/*"
+    "utils/**/*",
+    "templates/**/*"
   ],
   "bin": {
     "create-notethru-component": "./index.js"

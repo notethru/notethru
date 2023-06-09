@@ -10,8 +10,8 @@ async function readTemplates() {
 }
 
 async function cpTemplate(appName, root, useTypescript, useYarn) {
-    const destination = path.resolve(process.cwd(), appName)
 
+    
     const templates = await readTemplates()
     let templateToBeUsed = templates[0]
 

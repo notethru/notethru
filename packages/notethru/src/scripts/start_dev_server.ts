@@ -7,16 +7,16 @@ import fs from "fs"
 
 const compiler = webpack({ mode: "development", ...config })
 
-const watchSettings = {
-  aggregateTimeout: 300,
-  poll: undefined,
-}
+const importUrl = `${process.cwd()}/src/Component.js`
+const MainComponent = await import(importUrl)
 let watching: object
 
 const start_dev_server = async (str, options) => {
   
   const server = new WebpackDevServer({
-    
+    static: {
+      directory: path.resolve(path.dirname(new URL(import.meta.url).pathname), "../../render/public"),
+    },
   }, compiler);
 
   const runServer = async () => {
@@ -29,7 +29,7 @@ const start_dev_server = async (str, options) => {
 }
 
 
-export { start_dev_server, watching }
+export { start_dev_server, watching, MainComponent }
 
 
 

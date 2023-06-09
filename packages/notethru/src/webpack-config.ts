@@ -1,11 +1,14 @@
 import path from "path";
 import fs from "fs"
 import babelConfig from "./babel.config.js"
+import { createRequire } from "node:module";
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath);
 
 const node_modules_path = resolveApp('node_modules')
+
+const require_ = createRequire(process.cwd())
 
 export default {
   // mode: "development",
@@ -13,9 +16,9 @@ export default {
 //   devServer: {
 
 //   },
-  entry: path.resolve(process.cwd(), "src/Component.js"),
+  entry: path.resolve(process.cwd(), "./src/renderer/render.js"),
   output: {
-    path: path.resolve(process.cwd(), "./public"),
+    path: path.resolve(path.dirname(new URL(import.meta.url).pathname), "../render/public"),
     filename: "bundle.js",
   },
   module: {
@@ -70,6 +73,9 @@ export default {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    fallback: {
+      "path": "path-browserify"
+    }
   },
   resolveLoader: {
     modules: ["./node_modules"],
