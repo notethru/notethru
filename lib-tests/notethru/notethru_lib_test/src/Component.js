@@ -1,8 +1,7 @@
 import React from "react"
-import { createRoot } from "react-dom/client"
 import "./style.css"
 
-const Hello = () => {
+export default () => {
     return <>
         <div class="container">
             <div class="cookiesContent" id="cookiesPopup">
@@ -12,6 +11,3 @@ const Hello = () => {
         </div>
     </>
 };
-
-const root = createRoot(document.getElementById("root"))
-root.render(<Hello />)

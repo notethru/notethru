@@ -62,8 +62,8 @@ const part_1 = {
   appTsBuildInfoFile: resolveApp('node_modules/.cache/tsconfig.tsbuildinfo'),
   swSrc: resolveModule(resolveApp, 'src/service-worker'),
   //added by me
-  componentJs: resolveApp("src/Component.js"),
-  componentTs: resolveApp("src/Component.ts"),
+  componentRendererJs: resolveApp("src/renderer.js"),
+  componentRendererTs: resolveApp("src/renderer.ts"),
   publicFolderPath: resolveOwn("../public"),
   publicHtml: resolveApp('../public/index.html'),
 };

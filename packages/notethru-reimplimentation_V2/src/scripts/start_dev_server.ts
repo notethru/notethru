@@ -6,6 +6,7 @@ import { part_1 } from "../config/paths.js"
 const start_dev_server = () => {
     const webpackConfig = webpackConfigGenerator("development")
     const compiler = webpack(webpackConfig)
+    console.log(part_1.componentRendererJs)
 
     compiler.run((err, stats) => {
         if (err) {

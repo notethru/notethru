@@ -3,7 +3,7 @@ import { part_1 } from "../config/paths.js"
 export default (webpackEnv: string): object => {
     return {
         //componentJs path can also be ts path **needs work**
-        entry: part_1.componentJs,
+        entry: part_1.componentRendererJs,
         output: {
             path: part_1.publicFolderPath,
             filename: "bundle.js",
