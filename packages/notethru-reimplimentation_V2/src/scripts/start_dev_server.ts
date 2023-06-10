@@ -27,7 +27,7 @@ const start_dev_server = () => {
           chunks: false,
           colors: true,
         }));
-      });
+    });
 }
 
 export { start_dev_server }
