@@ -24,7 +24,7 @@ body {
 .cookiesContent img {
   width: 82px;
   margin-bottom: 15px;
-  animation: rotator 4s infinite;
+  animation: rotator 4s linear infinite;
 }
 .cookiesContent p {
   margin-bottom: 40px;
