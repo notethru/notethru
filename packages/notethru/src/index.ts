@@ -3,7 +3,6 @@
 import { Command } from "commander"
 import { start_dev_server } from "./scripts/start_dev_server.js"
 import { createRequire } from "node:module"
-import path from "path"
 
 const packageJson = createRequire(import.meta.url)("../package.json")
 
