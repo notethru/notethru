@@ -29,7 +29,7 @@ const moduleFileExtensions = [
 ];
 
 // Resolve file paths in the same order as webpack
-const resolveModule = (resolveFn, filePath) => {
+const resolveModule = (resolveFn: Function, filePath: string) => {
   const extension = moduleFileExtensions.find(extension =>
     fs.existsSync(resolveFn(`${filePath}.${extension}`))
   );

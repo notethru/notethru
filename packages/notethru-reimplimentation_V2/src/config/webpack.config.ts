@@ -3,6 +3,7 @@ import { part_1 } from "../config/paths.js"
 export default (webpackEnv: string): object => {
     return {
         //componentJs path can also be ts path **needs work**
+        mode: webpackEnv === "development" ? "development" : "production",
         entry: part_1.componentRendererJs,
         output: {
             path: part_1.publicFolderPath,

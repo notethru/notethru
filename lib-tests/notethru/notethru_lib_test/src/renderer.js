@@ -2,12 +2,12 @@
  * THE APPLICATION TO WORK PROPERLY ++
  */
 
-import Component from "./Component"
+import NotethruComponent from "./Component"
 import React from "react"
 import { createRoot } from "react-dom/client"
 
-// **MAIN RENDERER METHOD BEING USED FOR DEVELOPMENT** 
-//              || PLEASE DON'T TOUCH ||
+// **MAIN RENDER FUNCTION BEING USED FOR DEVELOPMENT** 
+//              **|| PLEASE DON'T TOUCH ||**
 
 const root = createRoot(document.getElementById("root"))
-root.render(<Component />)
+root.render(<NotethruComponent />)
