@@ -66,6 +66,7 @@ const part_1 = {
   componentRendererTs: resolveApp("src/renderer.ts"),
   publicFolderPath: resolveOwn("../public"),
   publicHtml: resolveApp('../public/index.html'),
+  appSrcFolder: resolveApp("src")
 };
 
 
