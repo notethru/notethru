@@ -481,7 +481,6 @@ function run(
       // `
       //   );
 
-      //Work Require Here
       await cpTemplate(appName, root, useTypescript, useYarn)
 
         if (version === 'react-scripts@0.9.x') {

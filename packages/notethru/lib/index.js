@@ -1,14 +1,16 @@
 #! /usr/bin/env node
 import { Command } from "commander";
 import { start_dev_server } from "./scripts/start_dev_server.js";
-const program = new Command("notethru");
+import { createRequire } from "node:module";
+const packageJson = createRequire(import.meta.url)("../package.json");
+const program = new Command(packageJson.name);
 process.on('unhandledRejection', err => {
     throw err;
 });
 program
-    .name("notethru")
-    .description("Notethru's official library for creating and publishing Notethru components.")
-    .version("1.0.0");
+    .name(packageJson.name)
+    .description(packageJson.description)
+    .version(packageJson.version);
 program
     .command("start")
     .description("Starts a development enviornment.")

@@ -6,16 +6,16 @@ import { createRequire } from "node:module"
 
 const packageJson = createRequire(import.meta.url)("../package.json")
 
-const program = new Command("notethru")
+const program = new Command(packageJson.name)
 
 process.on('unhandledRejection', err => {
     throw err;
 });
 
 program
-    .name("notethru")
-    .description("Notethru's official library for creating and publishing Notethru components.")
-    .version("1.0.0")
+    .name(packageJson.name)
+    .description(packageJson.description)
+    .version(packageJson.version)
 
 program
     .command("start")

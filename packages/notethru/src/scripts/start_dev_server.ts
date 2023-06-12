@@ -1,56 +1,42 @@
-import webpack, { node } from "webpack"
+import webpack from "webpack"
 import WebpackDevServer from "webpack-dev-server"
-import config from "../webpack-config.js"
-import chalk from "chalk"
-import path from "path"
-import fs from "fs"
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath: string) => path.resolve(appDirectory, relativePath);
+import webpackConfigGenerator from "../config/webpack.config.js"
+import devServerConfigGenerator from "../config/dev-server.config.js"
+import { part_1 } from "../config/paths.js"
 
-const node_modules_path = resolveApp('node_modules')
+const start_dev_server = () => {
+    const webpackConfig = webpackConfigGenerator("development")
+    const devServerConfig = devServerConfigGenerator() 
+    const compiler = webpack(webpackConfig)
 
+    // compiler.run((err, stats) => {
+    //     if (err) {
+    //       console.error(err);
+    //       return;
+    //     }
+      
+    //     const info = stats.toJson();
+      
+    //     if (stats.hasErrors()) {
+    //       console.error(info.errors);
+    //     }
+      
+    //     if (stats.hasWarnings()) {
+    //       console.warn(info.warnings);
+    //     }
+      
+    //     console.log(stats.toString({
+    //       chunks: false,
+    //       colors: true,
+    //     }));
+    // });
 
-const compiler = webpack({ mode: "development", ...config })
+    const server = new WebpackDevServer(devServerConfig, compiler)
 
-const watchSettings = {
-  aggregateTimeout: 300,
-  poll: undefined,
+    server.startCallback(() => {
+        console.log("Started")
+    })
 }
-let watching: object
 
-const start_dev_server = async (str, options) => {
-  
-  const server = new WebpackDevServer({
-    
-  }, compiler);
-
-  const runServer = async () => {
-    console.log('Starting server...');
-    await server.start();
-  };
-
-  runServer()
- 
-}
-
-
-export { start_dev_server, watching }
-
-
-
-
-// watching =  compiler.watch(watchSettings, (err, res) => {
-  //   if (err) {
-  //     console.log(err.message)
-  //     console.log("There is an error!")
-  //   }
-    
-  //   if (res.compilation.warnings) {
-  //     res.compilation.warnings.forEach(warning => console.log(chalk.yellow(warning)))
-  //   }
-    
-  //   if (res.compilation.errors) {
-  //     res.compilation.errors.forEach(error => console.log(error))
-  //   }
-  // });
+export { start_dev_server }

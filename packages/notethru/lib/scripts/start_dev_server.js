@@ -1,36 +1,32 @@
 import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
-import config from "../webpack-config.js";
-import path from "path";
-import fs from "fs";
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
-const node_modules_path = resolveApp('node_modules');
-const compiler = webpack({ mode: "development", ...config });
-const watchSettings = {
-    aggregateTimeout: 300,
-    poll: undefined,
+import webpackConfigGenerator from "../config/webpack.config.js";
+import devServerConfigGenerator from "../config/dev-server.config.js";
+const start_dev_server = () => {
+    const webpackConfig = webpackConfigGenerator("development");
+    const devServerConfig = devServerConfigGenerator();
+    const compiler = webpack(webpackConfig);
+    // compiler.run((err, stats) => {
+    //     if (err) {
+    //       console.error(err);
+    //       return;
+    //     }
+    //     const info = stats.toJson();
+    //     if (stats.hasErrors()) {
+    //       console.error(info.errors);
+    //     }
+    //     if (stats.hasWarnings()) {
+    //       console.warn(info.warnings);
+    //     }
+    //     console.log(stats.toString({
+    //       chunks: false,
+    //       colors: true,
+    //     }));
+    // });
+    const server = new WebpackDevServer(devServerConfig, compiler);
+    server.startCallback(() => {
+        console.log("Started");
+    });
 };
-let watching;
-const start_dev_server = async (str, options) => {
-    const server = new WebpackDevServer({}, compiler);
-    const runServer = async () => {
-        console.log('Starting server...');
-        await server.start();
-    };
-    runServer();
-};
-export { start_dev_server, watching };
-// watching =  compiler.watch(watchSettings, (err, res) => {
-//   if (err) {
-//     console.log(err.message)
-//     console.log("There is an error!")
-//   }
-//   if (res.compilation.warnings) {
-//     res.compilation.warnings.forEach(warning => console.log(chalk.yellow(warning)))
-//   }
-//   if (res.compilation.errors) {
-//     res.compilation.errors.forEach(error => console.log(error))
-//   }
-// });
+export { start_dev_server };
 //# sourceMappingURL=start_dev_server.js.map
