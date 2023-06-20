@@ -33,4 +33,18 @@ export class UserService {
       return undefined;
     }
   }
+  
+  async findUserByEmail(email: string) {
+    let user: User | undefined;
+    try {
+      user = await this.prismaService.user.findUnique({
+        where: {
+          email,
+        },
+      });
+      return user;
+    } catch (error) {
+      return undefined;
+    }
+  }
 }

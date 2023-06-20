@@ -6,9 +6,9 @@ import { JwtAuthGaurd } from './auth/gaurds/jwt-auth.gaurd';
 
 async function bootstrap() {
   config();
-  //chokidar for watching blogs folder
 
   const app = await NestFactory.create(AppModule);
+  app.enableCors()
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

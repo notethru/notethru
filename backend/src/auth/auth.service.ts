@@ -9,12 +9,16 @@ export class AuthService {
   constructor(private prisma: PrismaService, private jwtService: JwtService) {}
 
   async create(inputUser: AuthDTO) {
-    const userFromDatabase = await this.prisma.user.create({
-      data: {
-        ...inputUser,
-      },
-    });
-    return userFromDatabase;
+    try {
+      const userFromDatabase = await this.prisma.user.create({
+        data: {
+          ...inputUser,
+        },
+      });
+      return userFromDatabase;
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   async signin(inputUser: User) {

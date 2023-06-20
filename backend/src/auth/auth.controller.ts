@@ -5,8 +5,6 @@ import {
   Post,
   Request,
   UseGuards,
-  SetMetadata,
-  CustomDecorator,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDTO } from './dto';
@@ -28,11 +26,14 @@ export class AuthController {
   @Post('signup')
   @helpersInstance.Public()
   async createUser(@Body() body: AuthDTO) {
-    const user: User | undefined = await this.userService.findUser(
+    const userWithUsername: User | undefined = await this.userService.findUser(
       body.username,
     );
+    const userWithEmail: User | undefined = await this.userService.findUserByEmail(
+      body.email,
+    );
     let saltRounds = 10; //for bcrypt algoridhm
-    if (user) {
+    if (userWithUsername || userWithEmail) {
       throw new BadRequestException('User already exists');
     } else {
       const hashedPassword = await bcrypt.hash(body.password, saltRounds);
