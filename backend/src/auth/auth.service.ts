@@ -15,7 +15,12 @@ export class AuthService {
           ...inputUser,
         },
       });
-      return userFromDatabase;
+
+      const jwtPayload = {
+        username: userFromDatabase.username,
+        id: userFromDatabase.id
+      }
+      return { access_token: this.jwtService.sign(jwtPayload) };
     } catch (error) {
       console.log(error.message)
     }

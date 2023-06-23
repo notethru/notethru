@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Get,
   Post,
   Request,
   UseGuards,
@@ -52,5 +53,12 @@ export class AuthController {
   @helpersInstance.Public()
   signin(@Request() req) {
     return this.authService.signin(req.user);
+  }
+
+  @Get("user")
+  getUser(@Request() req) {
+    const user = req.user
+    delete user.password
+    return user
   }
 }
